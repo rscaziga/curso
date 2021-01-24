@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página de Prueba{% endblock %}
+
+{% block body %}
+{% for i in 1..20 %}
+    <div class="prueba">
+        {% if loop.index == 1 %}
+            <h2>{{ 'Vamos a probar!'|upper }}</h2>
+            <h1>#{{ loop.index }}</h1>
+        {% else %}
+            <h2>{{'Seguimos probando'}} #{{loop.index}}</h2>
+        {% endif %}
+        
+        {% for elemento in lista %}
+            <h4>{{ i }}.{{ loop.index }} - {{ elemento }}</h4>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+{% endblock %}
