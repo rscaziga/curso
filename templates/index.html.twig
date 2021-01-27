@@ -13,7 +13,7 @@
         {% endif %}
         
         {% for elemento in lista %}
-            <h4>{{ i }}.{{ loop.index }} - {{ elemento }}</h4>
+            <h4>{{ i }}.{{ loop.index }} - {{ elemento.apellido }}, {{ elemento.nombre }}</h4>
         {% endfor %}
     </div>
 {% endfor %}
