@@ -22,29 +22,29 @@ class UsuarioRepository extends ServiceEntityRepository
     // /**
     //  * @return Usuario[] Returns an array of Usuario objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByApellidoNombre($apellido, $nombre)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('u.apellido LIKE :apellido')
+            ->andWhere('u.nombre LIKE :nombre')
+            ->setParameter('apellido', $apellido.'%')
+            ->setParameter('nombre', $nombre.'%')
+            ->orderBy('u.apellido', 'ASC')
+            ->orderBy('u.nombre', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Usuario
+    public function findByUsername($username): ?Usuario
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('u.username = :username')
+            ->setParameter('username', $username)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }
