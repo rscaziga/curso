@@ -6,22 +6,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Usuario;
+use App\Repository\UsuarioRepository;
 
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/index", name="index")
      */
     public function index(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
-    #    dd($em);
         
         $usuarios = $em->getRepository(Usuario::class)->findAll();
-    #   dd($usuarios);
 
         return new Response($this->render('index.html.twig', ['lista' => $usuarios]));
-
     }
     
     /**

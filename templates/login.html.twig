@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingreso al Sitio{% endblock %}
+
+{% block body %}
+<style>
+.error {
+  background-color: red;
+  color: white;
+  padding: 10px;
+}
+.ok {background-color: green;
+  color: white;
+  padding: 10px;}
+</style>
+
+<form method="post">
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% elseif username %}
+        <div class="ok">
+            Has iniciado sesión como {{ username }}. Bienvenida/o {{ nombre }} {{ apellido }} !!!
+        </div>
+    {% endif %}
+
+    {% if error or not username %}
+        <h1 class="h3 mb-3 font-weight-normal">Por favor ingrese sus credenciales de acceso</h1>
+        <label for="inputUsername">Nombre de usuario</label>
+        <input type="text" value="{{ username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+        <label for="inputPassword">Contraseña</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+        <button type="submit">
+            Ingresar
+        </button>
+    {% endif %}
+</form>
+{% endblock %}
